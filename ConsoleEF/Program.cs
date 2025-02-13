@@ -12,15 +12,16 @@ Debug.WriteLine("This is a debug message just for developers.");*/
 // CodeFirst Formation SNTL
 
 //La création
+/*
 using (var context = new MyDbContextSNTL())
 {
 
     Client client = new Client
     {
-        Nom = "EL ARASS",
-        Address= "Address 2",
-        Email = "aelarass@sntl.ma",
-        Phone = "0662125712"
+        Nom = "EL KHALDI ASA",
+        Address= "Address SSS",
+        Email = "SSSS@gmail.ma",
+        Phone = "05889999"
     };
     context.Clients.Add(client);
     context.SaveChanges();
@@ -33,42 +34,55 @@ using (var context = new MyDbContextSNTL())
 {
     var list = context.Clients.ToList();
 
-    foreach (var item in list)
-    {
-        Console.WriteLine($"id = {item.Id}   Nom = {item.Nom} Email= {item.Email} Phone {item.Phone}");
-    }
+    list.ForEach(item => Console.WriteLine($"id = {item.Id}   Nom = {item.Nom} Email= {item.Email} Phone {item.Phone}"));
+
+    // foreach (var item in list)
+    // {
+    //     Console.WriteLine($"id = {item.Id}   Nom = {item.Nom} Email= {item.Email} Phone {item.Phone}");
+    // }
 
 
 }
 
-/*
+
 //Supperimer un element dans la table
 using (var context = new MyDbContextSNTL())
 {
 
-    var categorie = context.Categories.Where(a => a.Id == 1).FirstOrDefault();
-    var categorieByFind = context.Categories.Find(1);
-
-    if (categorie != null)
+   // var client = context.Clients.Where(a => a.Id == 1).FirstOrDefault();
+    var clientByFind = context.Clients.Find(4);
+    
+    if (clientByFind != null)
     {
-        context.Categories.Remove(categorie);
+        context.Clients.Remove(clientByFind);
         context.SaveChanges();
     }
 }
+
 
 //pour la modifications
 using (var context = new MyDbContextSNTL())
 {
-    var categorie = context.Categories.Where(a => a.Id == 2).FirstOrDefault();
-    if (categorie != null)
-    {
-        categorie.Nom = "Smart TV";
+    var client = context.Clients.Where(a => a.Id == 2).FirstOrDefault();
 
+    if (client != null)
+    {
+        client.Nom += " Amine";
         context.SaveChanges();
     }
 }
+*/
 
+// delete all 
+using (var context = new MyDbContextSNTL())
+{
+    var allClients = context.Clients.ToList(); // Récupérer tous les enregistrements
 
+    context.Clients.RemoveRange(allClients); // Supprimer tous les enregistrements
+
+    context.SaveChanges(); // Appliquer les changements
+
+}
 
 using (var context = new MyDbContextSNTL())
 {
@@ -76,14 +90,30 @@ using (var context = new MyDbContextSNTL())
     {
         try
         {
+            Random random = new Random();
+            // Choose a random number between 1 and 6 for the prefix
+            int prefixNumber = random.Next(0, 99); // Generates a number between 1 and 9
+            
+            // Format the prefix as two digits (e.g., 01, 02, ..., 06)
+            string prefix = prefixNumber.ToString("D2"); // "D2" ensures two-digit formatting
+            
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 1; i <= 10; i++)
             {
-                Categorie categorie = new Categorie
+                var client = new Client
                 {
-                    Nom = "Categorie " + i.ToString()
+                    Nom = "Client " + i,
+                    Email = "Client" + i + "@gmail.com",
+                    Phone = "06" + random.Next(0, 99).ToString("D2") + 
+                            random.Next(0, 99).ToString("D2") +
+                            random.Next(0, 99).ToString("D2") + 
+                            random.Next(0, 99).ToString("D2"),
+                    Address = "Address " + i ,
+                    CreatedAt = DateTime.Now
+        
+                
                 };
-                context.Categories.Add(categorie);
+                context.Clients.Add(client);
                 context.SaveChanges();
             }
 
@@ -97,7 +127,3 @@ using (var context = new MyDbContextSNTL())
         }
     }
 }
-
-*/
-
-
