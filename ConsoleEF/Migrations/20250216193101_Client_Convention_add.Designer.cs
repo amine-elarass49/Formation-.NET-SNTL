@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConsoleEF.Migrations
 {
     [DbContext(typeof(MyDbContextSNTL))]
-    [Migration("20250213145634_Add_Client_migration")]
-    partial class Add_Client_migration
+    [Migration("20250216193101_Client_Convention_add")]
+    partial class Client_Convention_add
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,7 +34,8 @@ namespace ConsoleEF.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int>("CreateBy")
                         .HasColumnType("int");
@@ -55,7 +56,9 @@ namespace ConsoleEF.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Nom")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
@@ -104,7 +107,9 @@ namespace ConsoleEF.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<DateTime>("StarDate")
                         .HasColumnType("datetime2");

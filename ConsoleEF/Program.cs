@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Diagnostics;
+using ConsoleAppEF.Entities;
 using ConsoleAppEF.Infra.Data;
 using Microsoft.Extensions.Logging;
 
@@ -21,10 +22,11 @@ using (var context = new MyDbContextSNTL())
         Nom = "EL KHALDI ASA",
         Address= "Address SSS",
         Email = "SSSS@gmail.ma",
-        Phone = "05889999"
+        Phone = "0588999962"
     };
     context.Clients.Add(client);
     context.SaveChanges();
+    Console.WriteLine("Client ajouté avec succès !");
 }
 
 
@@ -71,8 +73,8 @@ using (var context = new MyDbContextSNTL())
         context.SaveChanges();
     }
 }
-*/
 
+*/
 // delete all 
 using (var context = new MyDbContextSNTL())
 {
@@ -82,7 +84,11 @@ using (var context = new MyDbContextSNTL())
 
     context.SaveChanges(); // Appliquer les changements
 
+    var AllConventions = context.Conventions.ToList();
+    context.Conventions.RemoveRange(AllConventions); // Supprimer tous les enregistrements
+    context.SaveChanges(); // Appliquer les changements
 }
+
 
 using (var context = new MyDbContextSNTL())
 {
@@ -114,6 +120,19 @@ using (var context = new MyDbContextSNTL())
                 
                 };
                 context.Clients.Add(client);
+                 context.SaveChanges();
+
+                        var Convention = new Convention{
+                            ClientId = client.Id,
+                            Name = "Convention " + client.Id,
+                            StarDate = DateTime.Now,
+                            EndDate  = DateTime.Now.AddDays(5 * 365), // 5ans
+                            Status = TypeConvention.Conference,
+
+                        };
+                
+                        context.Conventions.Add(Convention);
+                        
                 context.SaveChanges();
             }
 
