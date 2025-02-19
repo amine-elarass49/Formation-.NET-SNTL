@@ -11,8 +11,8 @@ var client1 = new TClient(){
 dbContext.TClients. Add(client1);
 dbContext.SaveChanges();
 
-foreach(var client in dbContext.TClients.ToList().OrderBy(c=> c.Client)){
-    Console.WriteLine($"id {client.Id} , address: {client.Adresse}, Client: {client.Client}");
-}
-
-
+/* ToList() vs sans TOList() 
+ ToList() : lors using Where or OrderBY , s'execute au niveau de code
+ par contre : l'autre s'execute au niveau de la base de données
+*/
+dbContext.TClients.ToList().ForEach(c=>Console.WriteLine($"id {c.Id} , address: {c.Adresse}, Client: {c.Client}"));

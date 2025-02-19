@@ -1,0 +1,3 @@
+# Scaffolding (Reverse Engineering) DatabaseFirst
+# Avec argument no-onconfiguring (using ConnectionString hors la classe DBCOntext , dans Program.cs)
+# dotnet ef dbcontext scaffold "Server=localhost;Database=FormationOumdinAcademy;User Id=sa;Password=Pass123@;Trust Server Certificate=True" Microsoft.EntityFrameworkCore.SqlServer --context-dir Infra --output-dir Entities --no-onconfiguring --force 
