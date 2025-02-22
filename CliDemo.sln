@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppDBFirst", "Consol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppDBFirst2", "ConsoleAppDBFirst2\ConsoleAppDBFirst2.csproj", "{8B6EB9AC-D2BB-4DF7-ADF2-E18722E88F1B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcMovie", "MvcMovie\MvcMovie.csproj", "{093DFD85-BF39-4355-B829-766199ADD01B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApi", "TodoApi\TodoApi.csproj", "{E102F753-432E-4C4C-B159-34FAB7DEAFA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +52,13 @@ Global
 		{8B6EB9AC-D2BB-4DF7-ADF2-E18722E88F1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B6EB9AC-D2BB-4DF7-ADF2-E18722E88F1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B6EB9AC-D2BB-4DF7-ADF2-E18722E88F1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{093DFD85-BF39-4355-B829-766199ADD01B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{093DFD85-BF39-4355-B829-766199ADD01B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{093DFD85-BF39-4355-B829-766199ADD01B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{093DFD85-BF39-4355-B829-766199ADD01B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E102F753-432E-4C4C-B159-34FAB7DEAFA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E102F753-432E-4C4C-B159-34FAB7DEAFA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E102F753-432E-4C4C-B159-34FAB7DEAFA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E102F753-432E-4C4C-B159-34FAB7DEAFA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
